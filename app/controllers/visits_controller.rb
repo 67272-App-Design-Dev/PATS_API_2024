@@ -44,7 +44,7 @@ class VisitsController < ApplicationController
   before_action :set_visit, only: [:show, :update, :destroy]
 
   def index
-    @visits = Visit.chronological.paginate(page: params[:page]).per_page(10)
+    @visits = Visit.chronological
     # render json: @visits
     render json: VisitSerializer.new(@visits).serialized_json
   end

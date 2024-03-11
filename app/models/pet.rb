@@ -15,6 +15,8 @@ class Pet < ApplicationRecord
   has_many :treatments, through: :visits
   # has_many :notes, as: :notable
 
+  # Delegates
+  delegate :name, to: :animal, prefix: true
 
   # Scopes
   # -----------------------------
