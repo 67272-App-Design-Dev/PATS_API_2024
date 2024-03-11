@@ -1,24 +1,27 @@
-# README
+# PATS API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the code used in 67-272 to teach the basics of building an API. There are several branches here to demonstrate different aspects of API building. The branches build in a cumulative fashion, so the order to review these branches is:
 
-Things you may want to cover:
+- basics -- this is the most basic API possible
 
-* Ruby version
+- swagger -- this version is where we document the API with Swagger docs
 
-* System dependencies
+- serializers -- this version does some basic serialization to allow us to generate more interesting JSON
 
-* Configuration
+- adv_serializers -- a more advanced version of the prior branch
 
-* Database creation
+- serializers-fastjson -- similar to the serializers branch, it uses Netflix's `fast_jsonapi` gem for significant performance improvements
 
-* Database initialization
+- adv_serial_fastjson -- likewise, a more advanced version of the prior branch using the `fast_jsonapi` gem
 
-* How to run the test suite
+- cors -- allowing for cross origin resource sharing
 
-* Services (job queues, cache servers, search engines, etc.)
+- filtering -- this version adds flexibility to the API allowing us to filter and order results as needed
 
-* Deployment instructions
+- adv_filtering -- this version refactors the previous branch to reduce some obvious code duplication
 
-* ...
+- auth -- adding some authentication for the API to restrict access
+
+- versioning -- creating versions of the API
+
+- rackattack -- throttling access to the API to stop excessive usage
