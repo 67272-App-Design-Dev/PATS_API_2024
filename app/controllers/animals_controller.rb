@@ -44,11 +44,14 @@ class AnimalsController < ApplicationController
 
   def index
     @animals = Animal.alphabetical.all
-    render json: @animals
+    # render json: @animals
+    render json: AnimalSerializer.new(@animals).serialized_json
+
   end
 
   def show
-    render json: @animal
+    # render json: @animal
+    render json: AnimalSerializer.new(@animal).serialized_json
   end
 
   def create

@@ -45,11 +45,13 @@ class VisitsController < ApplicationController
 
   def index
     @visits = Visit.chronological.paginate(page: params[:page]).per_page(10)
-    render json: @visits
+    # render json: @visits
+    render json: VisitSerializer.new(@visits).serialized_json
   end
   
   def show
-    render json: @visit
+    # render json: @visit
+    render json: VisitSerializer.new(@visit).serialized_json
   end
   
   def create

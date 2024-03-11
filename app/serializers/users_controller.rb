@@ -47,8 +47,7 @@ class UsersController < ApplicationController
   def index
     # finding all the active owners and paginating that list (will_paginate)
     @users = User.all
-    # render json: @users
-    render json: UserSerializer.new(@users).serialized_json
+    render json: @users
   end
 
   def create

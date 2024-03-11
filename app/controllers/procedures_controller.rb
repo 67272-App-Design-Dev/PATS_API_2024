@@ -47,11 +47,13 @@ class ProceduresController < ApplicationController
 
   def index
     @procedures = Procedure.alphabetical.all
-    render json: @procedures
+    # render json: @procedures
+    render json: ProcedureSerializer.new(@procedures).serialized_json
   end
   
   def show
-    render json: @procedure
+    # render json: @procedure
+    render json: ProcedureSerializer.new(@procedure).serialized_json
   end
   
   def create

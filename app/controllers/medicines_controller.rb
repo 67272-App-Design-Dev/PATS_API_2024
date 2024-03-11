@@ -53,11 +53,13 @@ class MedicinesController < ApplicationController
 
   def index
     @medicines = Medicine.alphabetical.all
-    render json: @medicines
+    # render json: @medicines
+    render json: MedicineSerializer.new(@medicines).serialized_json
   end
   
   def show
-    render json: @medicine
+    # render json: @medicine
+    render json: MedicineSerializer.new(@medicine).serialized_json
   end
   
   def create
