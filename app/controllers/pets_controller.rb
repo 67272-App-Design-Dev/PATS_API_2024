@@ -5,6 +5,9 @@ class PetsController < ApplicationController
   swagger_api :index do
     summary "Fetches all Pet objects"
     notes "This lists all the pets in PATS system"
+    param :query, :active, :boolean, :optional, "Filter on whether or not the pet is active"
+    param :query, :alphabetical, :boolean, :optional, "Order pets alphabetically by name"
+
   end
 
   swagger_api :show do
@@ -51,9 +54,23 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :update, :destroy]
 
   def index
-    @active_pets = Pet.active.alphabetical.all
-    # render json: @active_pets
-    render json: PetSerializer.new(@active_pets).serialized_json
+    # Get all the pets (unfiltered)
+    @pets = Pet.all
+    # Filter by active/inactive if requested
+    if(params[:active].present?)
+      @pets = params[:active] == "true" ? @pets.active : @pets.inactive
+    end
+    # Order by name if requested
+    if params[:alphabetical].present? && params[:alphabetical] == "true"
+      @pets = @pets.alphabetical
+    end
+    # WAIT... Don't I have a bunch of scopes for filtering pets?
+    # Yes, I do!  There's got to be a better way to do this, especially
+    # now that I know about refactoring and the Ruby object model.
+    # I'll come back to this later in the next branch.  ;-)
+
+    # Output the json for the requested pets
+    render json: PetSerializer.new(@pets).serialized_json
 
   end
 
