@@ -10,6 +10,50 @@
         {
           "summary": "Fetches all Pet objects",
           "notes": "This lists all the pets in PATS system",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "active",
+              "type": "boolean",
+              "description": "Filter on whether or not the pet is active",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "females",
+              "type": "boolean",
+              "description": "Filter on whether or not the pet is female",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "for_owner",
+              "type": "integer",
+              "description": "Filter pets for a given owner id",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "by_animal",
+              "type": "integer",
+              "description": "Filter pets for a given animal id",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "born_before",
+              "type": "string",
+              "description": "Filter pets to find those born before a given date",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "alphabetical",
+              "type": "boolean",
+              "description": "Order pets alphabetically by name",
+              "required": false
+            }
+          ],
           "nickname": "Pets#index",
           "method": "get"
         }

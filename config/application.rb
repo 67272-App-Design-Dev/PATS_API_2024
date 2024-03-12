@@ -15,6 +15,11 @@ module PATSApi
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
+
+    # Autoload lib/ folder including all subdirectories
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]  
+
+
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
