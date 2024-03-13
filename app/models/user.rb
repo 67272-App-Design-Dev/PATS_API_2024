@@ -49,5 +49,12 @@ class User < ApplicationRecord
     find_by_username(username).try(:authenticate, password)
   end
 
+  # callback that generates the API key
+  before_create :generate_api_key
+
+  def generate_api_key
+    self.api_key = SecureRandom.hex
+  end
+
 end
 

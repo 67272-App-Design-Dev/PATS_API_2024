@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  # Routes related to authentication
+  resources :users
+  get :token, controller: 'application'
+  get :authenticate_with_token, controller: 'application'
+
+
   # Resource routes (maps HTTP verbs to controller actions automatically):
   resources :owners
   resources :animals
@@ -8,7 +15,6 @@ Rails.application.routes.draw do
   resources :treatments
   resources :medicines
   resources :procedures
-  resources :users
 
   # Routes for mecidine and procedure costs
   get 'medicine_costs/new', to: 'medicine_costs#new', as: :new_medicine_cost
